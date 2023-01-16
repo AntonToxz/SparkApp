@@ -7,16 +7,16 @@ object GlueApp extends App {
     .appName("SparkByExample")
     .getOrCreate()
   spark.sparkContext
-    .hadoopConfiguration.set("fs.s3a.access.key", "AKIAW2ZOM3DJF63WBQXS")
+    .hadoopConfiguration.set("fs.s3a.access.key", "")
   spark.sparkContext
-    .hadoopConfiguration.set("fs.s3a.secret.key", "bDB/oYUzS6SjYMiVKZjVkYsWY0QSHZbWAuH+WIUV")
+    .hadoopConfiguration.set("fs.s3a.secret.key", "")
   spark.sparkContext
-    .hadoopConfiguration.set("fs.s3a.endpoint", "s3.amazonaws.com")
+    .hadoopConfiguration.set("fs.s3a.endpoint", "")
 
   val sc = spark.sparkContext
   sc.setLogLevel("ERROR")
 
-  val df1 = spark.read.text("s3a://my-bucket-mao/input/shakespeare.txt")
+  val df1 = spark.read.text("")
   val df2 = df1.filter(row => !(row.mkString("").isEmpty && row.length>0))
 
   val df3 = df2.withColumn("word",explode(split(col("value")," ")))
@@ -29,6 +29,6 @@ object GlueApp extends App {
 
   df3.write
     .mode("overwrite")
-    .csv("s3a://my-bucket-mao/output/")
+    .csv("")
 
 }

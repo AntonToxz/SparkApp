@@ -1,2 +1,4 @@
 # Project exclude paths
 /target/
+/hs_err_pid15864.log
+/hs_err_pid23840.log
